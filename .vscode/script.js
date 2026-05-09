@@ -97,3 +97,104 @@ function adicionarBadge() {
     console.log(badge)
 
 }
+
+function mudarPoster() {
+    const poster = document.getElementById("poster-destaque");
+
+    const titulo = document.getElementById("titulo-destaque");
+
+    const opcoes = [
+
+        {
+            url: 'https://image.tmdb.org/t/p/w500/uKvVjHNqB5VmOrdxqAt2F7J78ED.jpg',
+            nome: 'The Last of Us'
+        },
+
+        {
+            url: 'https://image.tmdb.org/t/p/w500/qZtAf4Z1lazGQoYVXiHOrvLr5lI.jpg',
+            nome: 'Wednesday'
+        },
+
+        {
+            url: 'https://image.tmdb.org/t/p/w500/ztkUQFLlC19CCMYHW9o1zWhJRNq.jpg',
+            nome: 'Breaking Bad'
+        },
+
+        {
+            url: 'https://image.tmdb.org/t/p/w500/dDlEmu3EZ0Pgg93K2SVNLCjCSvE.jpg',
+            nome: 'Round 6'
+        },
+
+        {
+            url: 'https://image.tmdb.org/t/p/w500/twfKp60THrcOIep9sjHODOOfO8d.jpg',
+            nome: 'Stranger Things'
+        },
+    ];
+
+    const sorteado = opcoes[Math.floor(Math.random() * opcoes.length)];
+
+    poster.src = sorteado.url;
+
+    poster.alt = sorteado.nome;
+
+    titulo.textContent = sorteado.nome;
+
+    console.log("Poster")
+
+    poster.style.opacity = "0"
+
+    poster.style.transition = "opacity 0.3s"
+
+    setTimeout(() => {
+        poster.style.opacity = "1"
+
+        poster.classList.add("poster-fade-in")
+
+        setTimeout(() => {
+            poster.classList.remove("poster-fade-in")
+        }, 600);
+
+    }, 300)
+    
+}
+
+function adicionarDestaque() {
+    const card = document.getElementById("filme-destaque")
+
+    card.classList.add("destaque");
+
+    console.log("classes atuais", card.className)
+
+    setTimeout(() => {
+        card.classList.remove("destaque")
+    }, 3000)
+
+}
+
+function lerInput() {
+    const input = document.getElementById("input-busca");
+
+    const texto = input.value.trim();
+
+    if (texto === "") {
+        alert("Digite algo");
+        return;
+    }
+
+    const titulo = document.getElementById("titulo-destaque");
+
+    titulo.textContent = texto;
+
+    titulo.classList.add("texto-animado");
+
+    setTimeout(() => {
+        titulo.classList.remove("texto-animado")
+    }, 1500)
+}
+
+function resetarDemo2() {
+
+    document.getElementById("titulo-destaque").textContent = "The Wicher"
+
+    document.getElementById("poster-destaque".src = "https://image.tmdb.org/t/p/w500/7vjaCdMw15FEbXyLQTVa04URsPm.jpg")
+}
